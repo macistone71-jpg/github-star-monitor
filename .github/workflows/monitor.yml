@@ -1,0 +1,39 @@
+name: Monitor repository stars
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: github-star-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out monitor repository
+        uses: actions/checkout@v6
+
+      - name: Compare current stargazers with the saved snapshot
+        env:
+          GH_TOKEN: ${{ secrets.MONITOR_TOKEN }}
+          TARGET_OWNER: macistone71-jpg
+        run: python3 monitor.py
+
+      - name: Save snapshot and unstar log
+        run: |
+          git add data
+          if git diff --cached --quiet; then
+            echo "No stargazer changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update stargazer monitor data"
+          git push
