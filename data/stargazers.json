@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-09-02T05:14:55.403204Z",
+  "captured_at": "2026-09-02T12:22:24.065201Z",
   "owner": "macistone71-jpg",
   "repositories": {
     "macistone71-jpg/-1": {
@@ -163,8 +163,12 @@
       "37373466": "marc-ing",
       "76091079": "yuling170916"
     },
-    "macistone71-jpg/game-creation-skill": {},
-    "macistone71-jpg/heqingfeng-product-ui-skill": {},
+    "macistone71-jpg/game-creation-skill": {
+      "314186204": "macistone71-jpg"
+    },
+    "macistone71-jpg/heqingfeng-product-ui-skill": {
+      "314186204": "macistone71-jpg"
+    },
     "macistone71-jpg/learning-assessment-skill": {
       "138545633": "Nontylee",
       "237257341": "cpp285",
